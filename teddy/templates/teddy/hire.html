@@ -1,0 +1,25 @@
+{% extends "teddy/base.html" %}
+{% load staticfiles %}
+{% block title %} About Me {% endblock %}
+{%block head%}{%endblock head%}
+{%block jcss%}{%endblock jcss%}
+
+{%block content%}
+
+<div class="inner cover">
+            <form class="form-signin" action="." method="POST"> {% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+{%  for field in form.visible_fields %}
+ <div class="fieldWrapper">
+     {{ field.errors }}
+     {{ field.label_tag }} {{ field }}
+  </div>
+{% endfor %}
+<input type="submit" value="send message"  class="btn btn-lg btn-primary btn-block"/></p>
+<input type="hidden"  name="next" value="/teddy/thanks/"/>
+</form>
+          </div>
+ {% endblock content %}
+

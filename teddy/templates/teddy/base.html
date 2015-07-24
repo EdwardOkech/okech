@@ -1,0 +1,95 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edward Okech |
+{% block title %}{% endblock %}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="">
+ <meta name="author" content="">
+ <link href="{% static 'teddy/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+ <link href="{% static 'teddy/cover.css' %}" rel="stylesheet">
+ <style type="text/css" id="holderjs-style"></style>
+
+
+{%block jcss%}{%endblock jcss%} 
+</head>
+
+<!-- NAVBAR
+================================================== -->
+  <body>
+   <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">EDWARD OKECH</h3>
+              <ul class="nav masthead-nav">
+              {% block nav-global %}
+                <li class=""><a href="{% url 'teddy:index' %}">Home</a></li>
+                
+                <!--</h1>{#% load flatpages %#}
+                {#% get_flatpages as flatpages %#}
+                   {% for page in flatpage %#}-->
+                <li><a href="{% url 'teddy:about' %}">About Okech</a></li>
+                <!--{#% endfor %#}-->
+                
+                <li><a href="{% url 'teddy:projects' %}">Projects</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="{% url 'teddy:hobbies' %}">Hobbies</a></li>
+                <li><a href="{% url 'teddy:hire' %}">Hire Me</a></li>
+                {% endblock %}
+              </ul>
+              
+            </div>
+          </div>
+
+  
+                     
+                    
+                   
+    <!-- end of navbar 
+    ================================================================================= -->
+    
+    
+                 
+                     
+                     
+                    
+                  
+                
+        
+        {%block content%}{%block head%}{%endblock head%}{%endblock content%}
+       
+     <!-- FOOTER -->
+      <footer>
+         <div class="mastfoot">
+            <div class="inner">
+              <p>{% now "Y" %} ©Edward .A. Okech <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+        
+      </footer>
+
+    </div><!-- /.container -->
+
+
+   
+   <script src="{% static 'teddy/jquery.js' %}"></script>
+    <script src="{% static 'teddy/bootstrap.js' %}"></script>
+    <script src="{% static 'teddy/docs.js' %}"></script>
+
+</body></html>

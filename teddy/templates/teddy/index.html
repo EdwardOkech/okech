@@ -1,0 +1,18 @@
+{% extends "teddy/base.html" %}
+{% load staticfiles %}
+{% block title %}  Personal Space {% endblock %}
+{%block head%}{%endblock head%}
+{%block jcss%}{%endblock jcss%}
+{%block content%}
+
+<div class="inner cover">
+            <h1 class="cover-heading">Welcome To My Site!!</h1>
+            <p class="lead">"There are three types of lies in life: lies, damned lies and statistics"
+                --- Dr. Odheru ---</p>
+            <p class="lead">
+              <a href="{% url 'teddy:about' %}" class="btn btn-lg btn-default">Learn more</a>
+            </p>
+          </div>
+ {% endblock content %}
+   
+
