@@ -1,0 +1,28 @@
+{%load staticfiles%}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> {% block title %} Blog {% endblock %}</title>
+</head>
+
+<body>
+<div id="sidebar">{% block sidebar %}{% endblock %}</div>
+<div id="container">
+  <div id="menu">
+      {% block nav-global %}
+         <!------ MENU--------->
+         <h3>DEV PMS BLOG</h3>
+         {% if user.is_staff %}
+         <a href="{% url 'admin:index' %}">Admin</a>
+         <a href="{% url 'admin:blog_post_add' %}">Add post</a>
+         <a href="{% url 'dev_pms:index' %}">Dev Pms Home</a>
+         {% endif %}
+       {% endblock %}
+       </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  </div>
+</body>
+</html>

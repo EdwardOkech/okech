@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{%load staticfiles%}
+{% block title %}{% endblock %}
+{%block head%}{%endblock head%}
+{%block jcss%}{%endblock jcss%}
+{% block content %}
+<div class="main">
+{% block sidebar %}
+    <style type="text/css">
+	   #sidebar { float: right; border: 1px dotted #ccc; padding: 4px;
+	   }
+	</style>
+    <div id="sidebar">
+        Monthly Archive<br/>
+        {% for month in months %}
+           {% ifchanged month.0 %} {{ month.0 }} <br/> {% endifchanged %}
+           <a href="{% url 'blog.views.month : month.0 month.1' %}">{{ month.2 }} </a><br/>
+        {% endfor %}
+    </div>
+    {% endblock %}
+      <!--Posts-->
+      <ul>
+      {% for post in posts.object_list %}
+            <div class="title">{{ post.title }}</div>
+            <ul>
+               <div class="time"> {{ post.created }} </div>
+               <div class="body"> {{ post.body | linebreaks }} </div>
+            </ul>
+      {% endfor %}
+      <div class="commentlink"><a href="{#% url 'blog.views.post:post.pk' %}">Comments ({{ post.comment_set.count }})</a>
+      </ul>
+      <!----------NEXT/PREV page links ----------->
+      {% if posts.object_list and posts.paginator.num_page > 1 %}
+      <div class="paginator" style="margin-top: 20px; margin-left: -20px;">
+         <span class="step-links">
+           {% if posts.has_previous %}
+               <a href= "">newer entries  &lt;&lt;</a>
+           {% endif %}
+           <span class="current">
+              &nbsp; page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+            {% if posts.has_next %}
+                <a href=""> &gt;&gt; older entries</a>
+            {% endif %}
+            </span>
+            </div>
+            {% endif %}
+           </div>
+          
+            
+{% endblock content %}
